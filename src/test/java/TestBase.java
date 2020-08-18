@@ -1,6 +1,4 @@
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.DataProvider;
 import seleniumUtils.WebDriverUtils;
 
@@ -15,14 +13,13 @@ public abstract class TestBase extends WebDriverUtils{
 
     @AfterMethod
     public void closeDriver() {
-        sendScreen(getDriver());
         tearDown();
     }
 
     @DataProvider(name="invalidEmail")
     public static Object[][] invalidEmail(){
         return  new Object[][]{
-                {"user_Name", "<script>alert(\"XSS\")</script>", "123456@#rer"},
+                {"Andriu", "<script>alert(\"XSS\")</script>", "1234567"},
                 {"12#$%", "!@# . $ ^_ = %&(*", "wqwer!234"},
                 {"1", "@cccc", "sdfdf sdfsdf"}
         };

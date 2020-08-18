@@ -1,12 +1,10 @@
-import io.qameta.allure.Step;
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.RegisterPage;
 
 import static conf.Constants.BASE_URL;
 import static conf.Constants.REGISTER;
-import static manager.ManageService.getDirectlyUrl;
+import static manager.ManageService.*;
+import static manager.ScreenShooter.sendScreen;
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 
@@ -25,9 +23,13 @@ public class Register_001_InvalidEmailTest extends TestBase{
         registerPage.clickSignUpButton();
 
         //verify count error message
-        Assert.assertTrue(registerPage.errorMessage.size()==1);
+        assertTrue(registerPage.errorMessage.size()==1, "Error Message doesn't equals 1");
 
         //verify test error message
-        Assert.assertEquals(registerPage.errorMessage.get(0).getText(), errorMessage.get("errorInvalidEmail"));
+        assertEquals(registerPage.errorMessage.get(0).getText(), errorMessage.get("errorInvalidEmail"),
+                "Text Error Message are different");
+
+        //sent screen
+        sendScreen(getDriver());
     }
 }

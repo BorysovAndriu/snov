@@ -4,6 +4,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static manager.Log.LOG;
+
 public abstract class Page {
 
     private WebDriver driver;
@@ -20,20 +22,18 @@ public abstract class Page {
             wait.until(ExpectedConditions.elementToBeClickable(element));
 
         }catch (TimeoutException var){
-            //log.info(nameElement +" isn't clickable");
+            LOG.info(nameElement +" isn't clickable");
         }
 
         try{
             JavascriptExecutor executor = (JavascriptExecutor)driver;
             executor.executeScript("arguments[0].click();", element);
-            //log.info("Click on " + nameElement);
+            LOG.info("Click on " + nameElement);
         }catch (NoSuchElementException var){
-            //log.error(nameElement+" was not found on page long time");
+            LOG.error(nameElement+" was not found on page long time");
         }catch (ElementClickInterceptedException var){
-            //log.error(nameElement+ " is not clickable at point");
+            LOG.error(nameElement+ " is not clickable at point");
         }
 
     }
-
-
 }

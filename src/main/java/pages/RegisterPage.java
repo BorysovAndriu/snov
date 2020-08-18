@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static manager.Log.LOG;
+
 public class RegisterPage extends Page{
 
     private WebDriver driver;
@@ -36,15 +38,15 @@ public class RegisterPage extends Page{
 
         //Fill name
         nameField.sendKeys(name);
-        //log.info("fill name " + email);
+        LOG.info("fill name " + email);
 
         //Fill email
         emailField.sendKeys(email);
-        //log.info("fill email " + email);
+        LOG.info("fill email " + email);
 
         //Fill password
         passwordField.sendKeys(password);
-        //log.info("fill password " + password);
+        LOG.info("fill password " + password);
     }
 
     @Step("Click Sign Up Button")
