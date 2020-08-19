@@ -10,7 +10,6 @@
 
     <properties>
         <allure.version>2.12.0</allure.version>
-        <java.version>1.8</java.version>
         <aspectj.version>1.9.5</aspectj.version>
     </properties>
 
@@ -94,17 +93,10 @@
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>2.9</version>
-            </plugin>
-
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.9</version>
                 <configuration>
                     <resultsDirectory>${project.basedir}/allure-results</resultsDirectory>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
