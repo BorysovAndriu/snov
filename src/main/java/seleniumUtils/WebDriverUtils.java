@@ -3,19 +3,29 @@ package seleniumUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverUtils {
 
-    private WebDriver driver;
+    private RemoteWebDriver driver;
 
     public WebDriver getDriver(){
 
         //singleton
         if(driver==null){
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            //WebDriverManager.chromedriver().setup();
+            final DesiredCapabilities browser = DesiredCapabilities.chrome();
+            browser.setCapability("enableVNC", true);
+            try {
+                driver = new RemoteWebDriver(new URL("http://192.168.31.149:4444/wd/hub"), browser);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
             configure(driver);
         }
         return driver;
