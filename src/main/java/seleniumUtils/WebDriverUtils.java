@@ -22,7 +22,7 @@ public class WebDriverUtils {
             final DesiredCapabilities browser = DesiredCapabilities.chrome();
             browser.setCapability("enableVNC", true);
             try {
-                driver = new RemoteWebDriver(new URL("http://192.168.31.149:4444/wd/hub/"), browser);
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub/"), browser);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
